@@ -1,0 +1,73 @@
+<!-- ごくろうさまです -->
+
+
+<!DOCTYPE html>
+<html style="background-color:black;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="ja" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bccalc</title>
+<style>
+
+html{
+	height:100%;
+	font-size:14px;
+	line-height:100%;
+}
+body{
+	text-align:center;
+	background-color:#fff;
+	color:#000;
+	margin:0;
+	height:100%;
+}
+span{
+display:inline-block;
+}
+input{
+width:40px;
+margin:2px;
+}
+input[readonly]{
+background-color:#ccc;
+}
+</style>
+</head>
+
+<body>
+<div>
+	(<span>bst0<br><input type="text" bind:="bst0" feedback></input></span>
+	-<span>bst1<br><input type="text" bind:="bst1" feedback></input></span>)
+	/<span>⊿time<br><input type="text" bind:="dt" feedback></input>[sec]</span>
+	=<span>recv<br><input readonly type="text" bind:="recv" feedback>[bst/s]</input></span>
+</div>
+
+<div>
+	(<span>bst1<br><input type="text"></input></span>
+	-<span>bst2<br><input type="text"></input></span>)
+	/<span>recv<br><input type="text"></input>[bst/s]</span>
+	=<span>extend<br><input readonly type="text">[spd]</input></span>
+</div>
+
+</body>
+
+<script type="module" src="./index.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRLV13DDXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GRLV13DDXX');
+</script>
+
+</html>
+
+
