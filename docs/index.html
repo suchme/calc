@@ -13,16 +13,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>bccalc</title>
 <style>
+	video{
+		width:100%;
+	}
 
 html{
 	height:100%;
 	font-size:14px;
 	line-height:100%;
 }
+div.main{
+	margin-right:auto;
+	margin-left:auto;
+	width:360px;
+	background-color:#fff;
+}
 body{
 	text-align:center;
-	background-color:#fff;
-	color:#000;
+	background-color:#000;
 	margin:0;
 	height:100%;
 }
@@ -40,6 +48,17 @@ background-color:#ccc;
 </head>
 
 <body>
+<div class="main">
+
+<video src="sample.mp4" controls id="v"></video>
+<div>
+<button onpointerdown="main.changeFrame(-1)">←</button>
+<button onpointerdown="main.changeFrame(1)">→</button>
+<button onpointerdown="main.changeSec(-4)">←4s</button>
+<button onpointerdown="main.changeSec(4)">→4s</button>
+</div>
+
+<script type="module" src="./index.js"></script>
 <div>
 	(<span>bst0<br><input type="text" bind:="bst0" feedback></input></span>
 	-<span>bst1<br><input type="text" bind:="bst1" feedback></input></span>)
@@ -53,12 +72,14 @@ background-color:#ccc;
 	/<span>recv<br><input type="text"></input>[bst/s]</span>
 	=<span>extend<br><input readonly type="text">[spd]</input></span>
 </div>
+</div>
 
 </body>
 
 <script type="module" src="./index.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRLV13DDXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -67,7 +88,7 @@ background-color:#ccc;
 
   gtag('config', 'G-GRLV13DDXX');
 </script>
-
+-->
 </html>
 
 

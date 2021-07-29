@@ -1,15 +1,18 @@
-"use strict";
+var v = document.getElementById("v");
+var frame=0;
+var fps =60;
+var cancel=false;
+window.main={};
+main.changeFrame = function(f){
+	frame=Math.min(Math.max(frame+f,0),v.duration*fps);
+	v.currentTime=frame/fps;
 
-import Binder from "./binder.js";
-
-var binder=new Binder();
-var values={};
-
-
-var onloadfunc=function(){
-	binder.init(values);
-
+	cancel=window.setTimeout(()=>{changeFrame(f)},200);
+}
+main.changeSec = function(s){
+	changeFrame(s*fps);
 }
 
-
-onloadfunc();
+document.addEventListener("pointerup",()=>{
+	clearTimeout(cancel);
+});
