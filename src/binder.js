@@ -148,11 +148,20 @@ export default class Binder {
 
 		bind.binder=this;
 		this.binds.push(bind);
-
 		if(node.hasAttribute("feedback")){
-			node.addEventListener("change",()=>{
-				bind.feedBack();
-			});
+			var f= node.getAttribute("feedback");
+			if(f != null && f!=""){
+				var func = Function(f);
+				node.addEventListener("change",()=>{
+					bind.feedBack();
+					func();
+				});
+				
+			}else{
+				node.addEventListener("change",()=>{
+					bind.feedBack();
+				});
+			}
 		}
 		return bind;
 	}

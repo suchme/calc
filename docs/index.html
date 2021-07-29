@@ -37,9 +37,19 @@ body{
 span{
 display:inline-block;
 }
-input{
-width:40px;
-margin:2px;
+span.small{
+	font-size:10px;
+}
+input[type="text"]{
+	width:40px;
+	margin:2px;
+	text-align:right;
+}
+input.bst{
+width:30px;
+}
+input.time{
+width:20px;
 }
 input[readonly]{
 background-color:#ccc;
@@ -52,25 +62,30 @@ background-color:#ccc;
 
 <video src="sample.mp4" controls id="v"></video>
 <div>
+<span><input type="text" bind:="frame" readonly ></input></span>
 <button onpointerdown="main.changeFrame(-1)">←</button>
 <button onpointerdown="main.changeFrame(1)">→</button>
 <button onpointerdown="main.changeSec(-4)">←4s</button>
 <button onpointerdown="main.changeSec(4)">→4s</button>
+<input type="file" id="file"></input>
 </div>
 
-<script type="module" src="./index.js"></script>
+<hr>
 <div>
-	(<span>bst0<br><input type="text" bind:="bst0" feedback></input></span>
-	-<span>bst1<br><input type="text" bind:="bst1" feedback></input></span>)
-	/<span>⊿time<br><input type="text" bind:="dt" feedback></input>[sec]</span>
+	(<span><span class="small">bst0</span><br><input type="text" class="bst" bind:="bst0" feedback="main.recalc()"></input></span>
+	-<span><span class="small">bst1</span><br><input type="text" class="bst" bind:="bst1" feedback="main.recalc()"></input></span>)[bst]
+	/<span>⊿time<br><input class="time" type="text" bind:="dt" feedback="main.recalc()"></input>[s]</span>
 	=<span>recv<br><input readonly type="text" bind:="recv" feedback>[bst/s]</input></span>
 </div>
 
+<hr>
 <div>
-	(<span>bst1<br><input type="text"></input></span>
-	-<span>bst2<br><input type="text"></input></span>)
-	/<span>recv<br><input type="text"></input>[bst/s]</span>
-	=<span>extend<br><input readonly type="text">[spd]</input></span>
+	8833[spd・s]
+	*<span>range<br><input type="text" bind:="range" feedback="main.recalc2()"></input>[%]</span><br>
+	/{(<span>bst2<br><input class="bst" type="text" bind:="bst2" feedback="main.recalc2()"></input></span>
+	-<span>bst3<br><input class="bst" type="text" bind:="bst3" feedback="main.recalc2()"></input></span>[bst]
+	/<span>recv<br><input type="text" bind:="recv" feedback="main.recalc2()"></input>[bst/s]</span> }
+	=<span>extend<br><input readonly bind:="extend" type="text">[spd]</input></span>
 </div>
 </div>
 
