@@ -60,32 +60,37 @@ background-color:#ccc;
 <body>
 <div class="main">
 
-<video src="sample.mp4" controls id="v"></video>
+<video controls id="v"></video>
 <div>
-<span><input type="text" bind:="frame" readonly ></input></span>
+<span><input type="text" bind:="frame" readonly ></input>frame</span>
 <button onpointerdown="main.changeFrame(-1)">←</button>
 <button onpointerdown="main.changeFrame(1)">→</button>
 <button onpointerdown="main.changeSec(-4)">←4s</button>
 <button onpointerdown="main.changeSec(4)">→4s</button>
-<input type="file" id="file"></input>
+<button onclick="document.getElementById('file').click();">read file</button>
+<input type="file" id="file" style="display:none;"></input>
 </div>
 
 <hr>
 <div>
-	(<span><span class="small">bst0</span><br><input type="text" class="bst" bind:="bst0" feedback="main.recalc()"></input></span>
-	-<span><span class="small">bst1</span><br><input type="text" class="bst" bind:="bst1" feedback="main.recalc()"></input></span>)[bst]
-	/<span>⊿time<br><input class="time" type="text" bind:="dt" feedback="main.recalc()"></input>[s]</span>
-	=<span>recv<br><input readonly type="text" bind:="recv" feedback>[bst/s]</input></span>
+	(<span><span class="small">bst0[bst]</span><br><input type="text" class="bst" bind:="bst0" feedback="main.recalc()"></input></span>
+	-<span><span class="small">bst1[bst]</span><br><input type="text" class="bst" bind:="bst1" feedback="main.recalc()"></input></span>)
+	/<span><span class="small">⊿time[s]</span><br><input class="time" type="text" bind:="dt" feedback="main.recalc()"></input></span>
+	=<span><span class="small">recv[bst/s]</span><br><input readonly type="text" bind:="recv" feedback></input></span>
 </div>
 
 <hr>
 <div>
-	8833[spd・s]
-	*<span>range<br><input type="text" bind:="range" feedback="main.recalc2()"></input>[%]</span><br>
-	/{(<span>bst2<br><input class="bst" type="text" bind:="bst2" feedback="main.recalc2()"></input></span>
-	-<span>bst3<br><input class="bst" type="text" bind:="bst3" feedback="main.recalc2()"></input></span>[bst]
-	/<span>recv<br><input type="text" bind:="recv" feedback="main.recalc2()"></input>[bst/s]</span> }
-	=<span>extend<br><input readonly bind:="extend" type="text">[spd]</input></span>
+
+	(<span><span class="small">bst2[bst]</span><br><input class="bst" type="text" bind:="bst2" feedback="main.recalc2()"></input></span>
+	-<span><span class="small">bst3[bst]</span><br><input class="bst" type="text" bind:="bst3" feedback="main.recalc2()"></input></span>)
+	/<span><span class="small">recv[bst/s]</span><br><input type="text" bind:="recv" feedback="main.recalc2()"></input></span>
+	=<span><span class="small">⊿time[s]</span><br><input type="text" bind:="dt2" readonly></input></span><br>
+	
+	<span><span class="small">spd per range[spd・s]</span><br>8833</input></span>
+	*<span><span class="small">range[%]</span><br><input type="text" bind:="range" feedback="main.recalc2()"></input></span>
+	/<span><span class="small">⊿time[s]</span><br><input type="text" bind:="dt2" readonly></input></span>
+	=<span><span class="small">extend[spd]<br><input readonly bind:="extend" type="text"></input></span>
 </div>
 </div>
 

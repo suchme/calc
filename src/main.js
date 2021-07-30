@@ -29,7 +29,8 @@ main.recalc=function(){
 	calc.recv = (calc.bst0 - calc.bst1)/calc.dt;
 }
 main.recalc2=function(){
-	calc.extend = (calc.range/100)/((calc.bst2 - calc.bst3)/calc.recv)   *8833;
+	calc.dt2 = (calc.bst2 - calc.bst3)/calc.recv;
+	calc.extend = (calc.range/100) *8833 / dt2;
 }
 
 
