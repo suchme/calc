@@ -16,6 +16,11 @@
 	video{
 		width:100%;
 	}
+div.title{
+	margin-top:8px;
+	background-color:#000;
+color:#fff;
+}
 
 html{
 	height:100%;
@@ -62,6 +67,7 @@ input[type="text"]{
 	width:40px;
 	margin:2px;
 	text-align:right;
+border:1px solid black;
 }
 input.bst{
 width:30px;
@@ -80,50 +86,51 @@ border-style:dotted;
 
 <video controls id="v"></video>
 <div>
-<span><input type="text" bind:="frame" readonly ></input>sec</span>
+<span><input type="text" bind:="frame" readonly tabindex="-1" ></input>sec</span>
 <button onpointerdown="main.changeFrame(-1)">-1f</button>
 <button onpointerdown="main.changeFrame(1)">+1f</button>
-<button onpointerdown="main.changeSec(-0.3)">-0.3s</button>
-<button onpointerdown="main.changeSec(0.3)">+0.3s</button>
+<button onpointerdown="main.changeFrame(-20)">-20f</button>
+<button onpointerdown="main.changeFrame(20)">+20f</button>
 <button onclick="document.getElementById('file').click();">load file</button>
 <input type="file" id="file" style="display:none;"></input>
 </div>
 <div bind:="filename"></div>
-
-<hr>
 <div>
-	ブースト回復量<br>
+<div class="title">
+	ブースト回復量
+	</div>
 	|<span><span class="small">BST残量1[bst]</span><br><input type="text" class="bst" bind:="bst0" feedback="main.recalc()"></input></span>
 	-<span><span class="small">BST残量2[bst]</span><br><input type="text" class="bst" bind:="bst1" feedback="main.recalc()"></input></span>|
 	/<span><span class="small">計測時間[秒]</span><br><input class="time" type="text" bind:="dt" feedback="main.recalc()"></input></span>
-	=<span><span class="small">BST回復量[bst/秒]</span><br><input readonly class="recv" type="text" bind:="recv" feedback></input></span>
+	=<span><span class="small">BST回復量[bst/秒]</span><br><input readonly tabindex="-1" class="recv" type="text" bind:="recv" feedback></input></span>
 </div>
 
-<hr>
 <div>
-	ジェム回収範囲展開速度<br>
+<div class="title">
+	ジェム回収範囲展開速度
+	</div>
 	|<span><span class="small">BST残量1[bst]</span><br><input class="bst" type="text" bind:="bst2" feedback="main.recalc2()"></input></span>
 	-<span><span class="small">BST残量2[bst]</span><br><input class="bst" type="text" bind:="bst3" feedback="main.recalc2()"></input></span>|
 	/<span><span class="small">BST回復量[bst/s]</span><br><input class="recv" type="text" bind:="recv" feedback="main.recalc2()"></input></span>
-	=<span><span class="small">計測時間[秒]</span><br><input type="text" bind:="dt2" readonly class="time" ></input></span><br>
+	=<span><span class="small">計測時間[秒]</span><br><input type="text" bind:="dt2" readonly tabindex="-1" class="time" ></input></span><br>
 	
 	<span><span class="small">秒速1射程相当のSPD[spd・秒]</span><br>8833</input></span>
 	*<span><span class="small">射程[%]</span><br><input type="text" bind:="range" feedback="main.recalc2()"></input></span>
-	/<span><span class="small">計測時間[秒]</span><br><input type="text" bind:="dt2" class="time" readonly></input></span>
-	=<span><span class="small">展開速度[spd]<br><input readonly bind:="extend" type="text" class="extend"></input></span>
+	/<span><span class="small">計測時間[秒]</span><br><input type="text" bind:="dt2" class="time" readonly tabindex="-1"></input></span>
+	=<span><span class="small">展開速度[spd]</span><br><input readonly tabindex="-1" bind:="extend" type="text" class="extend"></input></span>
 </div>
-<hr>
 <div>
-	ダッシュ速度<br>
-	|<span><span class="small">BST残量1[bst]</span><br><input class="bst" type="text" bind:="bst2" feedback="main.recalc3()"></input></span>
-	-<span><span class="small">BST残量2[bst]</span><br><input class="bst" type="text" bind:="bst3" feedback="main.recalc3()"></input></span>|
-	/<span><span class="small">BST消費[bst/秒]</span><br><input type="text" class="cost" bind:="recv" feedback="main.recalc3()"></input></span>
-	=<span><span class="small">計測時間[秒]</span><br><input type="text" class="time" bind:="dt2" readonly></input></span><br>
+<div class="title">
+	ダッシュ速度</div>
+	|<span><span class="small">BST残量1[bst]</span><br><input class="bst" type="text" bind:="bst4" feedback="main.recalc3()"></input></span>
+	-<span><span class="small">BST残量2[bst]</span><br><input class="bst" type="text" bind:="bst5" feedback="main.recalc3()"></input></span>|
+	/<span><span class="small">BST消費[bst/秒]</span><br><input type="text" class="cost" bind:="dash_cost" feedback="main.recalc3()"></input></span>
+	=<span><span class="small">計測時間[秒]</span><br><input type="text" class="time" bind:="dt3" readonly tabindex="-1"></input></span><br>
 	
 	<span><span class="small">秒間1再生あたりのSPD[spd・秒/回]</span><br>200</input></span>
-	*<span><span class="small">走り再生数[回]</span><br><input type="text" bind:="range" feedback="main.recalc3()"></input></span>
-	/<span><span class="small">計測時間[秒]</span><br><input type="text" class="time" bind:="dt2" readonly></input></span>
-	=<span><span class="small">ダッシュ速度[spd]<br><input readonly bind:="extend" type="text" class="dash"></input></span>
+	*<span><span class="small">走り再生数[回]</span><br><input type="text" bind:="dash_cycle" feedback="main.recalc3()"></input></span>
+	/<span><span class="small">計測時間[秒]</span><br><input type="text" class="time" bind:="dt3"  readonly tabindex="-1"></input></span>
+	=<span><span class="small">ダッシュ速度[spd]</span><br><input readonly tabindex="-1" bind:="dash" type="text" class="dash"></input></span>
 </div>
 </div>
 

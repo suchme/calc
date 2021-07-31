@@ -3,15 +3,14 @@ var v = document.getElementById("v");
 var calc={};
 calc.frame=0;
 calc.fps =60;
+calc.dt=1;
 var cancel=false;
 var binder = new Binder();
 
 v.addEventListener("seeked",function(e){
 	var old = calc.frame;
-//	var frame = v.currentTime * calc.fps;
-		calc.frame =v.currentTime;
+	calc.frame =v.currentTime;
 	
-//	calc.frame +=Math.sign(old-frame);
 });
 window.main={};
 var presson = false;
@@ -27,13 +26,13 @@ main.changeFrame = function(f){
 	v.currentTime=calc.frame;
 	presson=true;
 
-	window.setTimeout(()=>{
-		if(!presson){
-			return;
-		}
-		main.changeFrame(f)}
-		,400
-	);
+//	window.setTimeout(()=>{
+//		if(!presson){
+//			return;
+//		}
+//		main.changeFrame(f)}
+//		,400
+//	);
 	
 }
 main.changeSec = function(s){
@@ -45,6 +44,10 @@ main.recalc=function(){
 main.recalc2=function(){
 	calc.dt2 = Math.abs(calc.bst2 - calc.bst3)/calc.recv;
 	calc.extend = (calc.range/100) *8833 / calc.dt2;
+}
+main.recalc3=function(){
+	calc.dt3 = Math.abs(calc.bst4 - calc.bst5)/calc.dash_cost;
+	calc.dash = 200 * calc.dash_cycle / calc.dt3;
 }
 
 
