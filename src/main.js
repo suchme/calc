@@ -43,11 +43,16 @@ main.recalc=function(){
 }
 main.recalc2=function(){
 	calc.dt2 = Math.abs(calc.bst2 - calc.bst3)/calc.recv;
-	calc.extend = (calc.range/100) *8833 / calc.dt2;
+	calc.spd1 = 8833 / calc.dt2;
+	calc.extend = calc.spd1 * (calc.range/100)/2;
+	calc.extend2 = calc.spd1 * (10.3/100) ;
 }
 main.recalc3=function(){
 	calc.dt3 = Math.abs(calc.bst4 - calc.bst5)/calc.dash_cost;
 	calc.dash = 200 * calc.dash_cycle / calc.dt3;
+}
+main.recalc4=function(){
+	calc.increase= 1000 / calc.increase_time;
 }
 
 
