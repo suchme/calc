@@ -119,12 +119,12 @@ border-style:dotted;
 	= <span><span class="small">1射程のSPD[spd]</span><br><input type="text" bind:="spd1" class="" readonly tabindex="-1"></input></span><br>
 	 
 	<span><span class="small">1射程のSPD[spd]</span><br><input type="text" bind:="spd1" class="" readonly tabindex="-1"></input></span>
-	* <span><span class="small">近接射程[%]</span><br>10.3</input></span>
+	* <span><span class="small">近接射程[%]</span><br>(9.5-1.5)</input></span>
 	=<span><span class="small">展開速度[spd]</span><br><input readonly tabindex="-1" bind:="extend2" type="text" class="extend"></input></span><br>
 	 
 	<span><span class="small">1射程のSPD[spd]</span><br><input type="text" bind:="spd1" class="" readonly tabindex="-1"></input></span>
-	* <span><span class="small">射程[%]</span><br><input type="text" bind:="range" feedback="main.recalc2()"></input></span>
-	<span><span class="small">遠距離の場合は÷2</span><br>/2</span>
+	* <span><span class="small">射程[%]</span><br>(<input type="text" bind:="range" feedback="main.recalc2()"></input>-0.5)</span>
+	<span><span class="small">遠距離の場合は/2.5</span><br>/2.5</span>
 	=<span><span class="small">展開速度[spd]</span><br><input readonly tabindex="-1" bind:="extend" type="text" class="extend"></input></span>
 </div>
 <div>
@@ -145,7 +145,7 @@ border-style:dotted;
 	ゲージ増加率</div>
 	<span><span class="small">ゲージ最大値[%]</span><br>100</input></span>
 	/<span><span class="small">溜まるまでの時間[秒]</span><br><input class="time" type="text" bind:="increase_time" feedback="main.recalc4()"></input></span>
-	=<span><span class="small">[%/10000ダメージ]</span><br><input class="" bind:="increase" type="text" readonly tabindex="-1"></input></span>|
+	=<span><span class="small">[%/10000ダメージ]</span><br><input class="" bind:="increase" type="text" readonly tabindex="-1"></input></span>
 </div>
 </div>
 

@@ -12,9 +12,12 @@ path:  __dirname + "/docs"
   // ローカル開発用環境を立ち上げる
   // 実行時にブラウザが自動的に localhost を開く
   devServer: {
-    contentBase: "docs",
     open: true,
-	port:8081
+	port:8081,
+	host: '0.0.0.0',
+	static: {
+		directory: "docs",
+	}
   },
   module: {
     rules: [
@@ -37,7 +40,20 @@ path:  __dirname + "/docs"
             },
           },
         ],
-      },
+      }
+	,{
+        test: /\.css/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+          }
+        ]
+      }
+      ,{
+        test: /\.(png|jpg|gif|svg)$/
+        ,type: "asset/inline"
+      }
     ],
   },
   // ES5(IE11等)向けの指定
